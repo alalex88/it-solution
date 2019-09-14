@@ -1,6 +1,7 @@
 console.log("Test");
 //ввод числа пользователем
 let N = parseInt(prompt("Введите число", 28));
+//объявление массива
 let arr = [];
 //функция подсчета знаков числа
 function countDigits(n) {

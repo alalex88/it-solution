@@ -1,7 +1,7 @@
 let form = document.forms.someForm;
 //обработка события
 form.addEventListener('submit', formHandler);
-
+//вызов функции
 function formHandler(event){
 	//отмене действия браузера
 	event.preventDefault();
