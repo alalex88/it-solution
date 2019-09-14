@@ -3,7 +3,6 @@ $post = $_POST;
 $number = (int) $post['number'];
 $arr = [];
 $file_test = 'test.txt';
-
 //проверка введенных данных на отрицательное число и пустоту
 if (empty($number) || $number < 0) {
 	echo "введите целое и положительное число";
