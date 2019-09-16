@@ -1,33 +1,28 @@
 <?php 
 $post = $_POST;
-$number = (int) $post['number'];
 $arr = [];
 $file_test = 'test.txt';
 
-//проверка введенных данных на отрицательное число и пустоту
-if (empty($number) || $number < 0) {
-	echo "введите целое и положительное число";
-	return;
-}
-//подсчет знаков введенного числа
-//удаление пробелов
-// $num = strlen(trim($number));
-//var_dump($num);
+//вводится пользователем $N
+$N = (int) $post['number'];
 //вызов функции записи в фаил
-loadTitle($file_test, $number);
-for ($i=1; $i <=$number ; $i++) {
-	//подсчет символов каждого числа от 0 до N 
-	$num = strlen(trim($i));
-	$res = $i%$num;
+loadTitle($file_test, $N);
+$i=0;
+while ($N) {
+	$bit = strlen(trim($i));
+	$res = $i%$bit;
 	if ($res === 0) {
 		//запись данных в массив $arr
 		array_push($arr, $i);
 		//вызов функции записи в фаил
-		loadFile($file_test, $i, $num);
+		loadFile($file_test, $i, $bit);
 	 	// echo "число $i Остаток $res <br>";
-	 }	
+	 	$N--;
+	 }		
+	$i++;
 }
-var_dump($arr);
+
+// var_dump($arr);
 //функция записи заголовка в фаил
 function loadTitle($file, $number){
 	$current = file_get_contents($file);
@@ -35,9 +30,9 @@ function loadTitle($file, $number){
 	return file_put_contents($file, $current, LOCK_EX);
 }
 //функция записи результата в фаил
-function loadFile($file, $number, $num){
+function loadFile($file, $number, $bit){
 	$current = file_get_contents($file);
-	$current .= 'Число ' . $number . ' делим на '. $num . "\n";
+	$current .= 'Число ' . $number . ' делим на '. $bit . "\n";
 	return file_put_contents($file, $current, LOCK_EX);
 }
 
