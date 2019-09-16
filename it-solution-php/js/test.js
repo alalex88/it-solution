@@ -1,7 +1,7 @@
 let form = document.forms.someForm;
 //обработка события
 form.addEventListener('submit', formHandler);
-//вызов функции
+
 function formHandler(event){
 	//отмене действия браузера
 	event.preventDefault();
@@ -21,3 +21,9 @@ function formHandler(event){
 	//отправка формы
 	this.submit();
 }
+
+// TweenMax.to(".logo", 20, {x:100, rotation:360, scale:1});
+// TweenMax.from(".logo", 6, {x:600, ease:Bounce.easeOut});
+TweenMax.from(".logo", 0.5, {opacity:0, scale:0, ease:Bounce.easeOut});
+TweenMax.staggerFrom(".box", 0.5, {opacity:0, y:200, scale:0.5, delay:0.5}, 0.2);
+TweenMax.to(".logo, .box", 0.5, {opacity:0, delay:2});

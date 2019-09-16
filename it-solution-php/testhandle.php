@@ -3,6 +3,7 @@ $post = $_POST;
 $number = (int) $post['number'];
 $arr = [];
 $file_test = 'test.txt';
+
 //проверка введенных данных на отрицательное число и пустоту
 if (empty($number) || $number < 0) {
 	echo "введите целое и положительное число";
@@ -10,11 +11,13 @@ if (empty($number) || $number < 0) {
 }
 //подсчет знаков введенного числа
 //удаление пробелов
-$num = strlen(trim($number));
+// $num = strlen(trim($number));
 //var_dump($num);
 //вызов функции записи в фаил
 loadTitle($file_test, $number);
 for ($i=1; $i <=$number ; $i++) {
+	//подсчет символов каждого числа от 0 до N 
+	$num = strlen(trim($i));
 	$res = $i%$num;
 	if ($res === 0) {
 		//запись данных в массив $arr
