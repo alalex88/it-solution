@@ -2,28 +2,20 @@ console.log("Test");
 //ввод числа пользователем
 let N = parseInt(prompt("Введите число", 28));
 //объявление массива
-let arr = [];
-//функция подсчета знаков числа
-function countDigits(n) {
-	//проверка на число
-	if (typeof n !== "number" || !n) {
-	console.log("Введите число");
-	return;
+let bit;
+let res;
+let arr =[];
+// console.log(N.toString().length);
+let i=0;
+while (N) {
+	bit = i.toString().length;
+	res = i%bit;
+	if (res === 0) {
+		console.log("Деление на "+bit, i);	
+		arr.push(i);	
+	 	N--;
+	 }		
+	i++;
 }
-   for(var i = 0; n > 1; i++) {
-      n /= 10;
-   }
-   return i;
-}
-//вызов функции подсчета знаков
-let n = countDigits(N);
-//подсчет и вывод результата
-for (let i = 1; i <= N; i++) {
-	if (i%n === 0) {
-		console.log("Деление на "+n, i);
-		//добавение результата в массив
-		arr.push(i);		
-	}	
-}
-console.log("результат выполнения кода для N="+N, arr);
-alert("результат выполнения кода для N="+N+' '+arr);
+console.log("результат выполнения кода для N="+arr.length, arr);
+alert("результат выполнения кода для N="+arr.length+' '+arr);
